@@ -1,0 +1,20 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "k8s-demo-backend"
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: "backend"
+  template:
+    metadata:
+      labels:
+        app: "backend"
+    spec:
+      containers:
+        - name: "backend"
+          image: "k8s-demo-backend"
+          imagePullPolicy: "Never"
+          ports:
+            - containerPort: 8000
